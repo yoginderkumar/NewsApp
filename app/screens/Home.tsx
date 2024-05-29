@@ -58,15 +58,22 @@ const HomeScreen = () => {
   useEffect(() => {
     const initializeApp = async () => {
       try {
-        const storedHeadlines = await getTopHeadlines();
-        setAllHeadlines(storedHeadlines);
-        setHeadlines(storedHeadlines.slice(0, 10));
+        const storedHeadlines = await getTopHeadlines(); // Attempts to fetch stored headlines first
+        if (storedHeadlines.length === 0) {
+          // No stored headlines, fetch from API
+          const freshHeadlines = await fetchTopHeadlines();
+          setAllHeadlines(freshHeadlines);
+          setHeadlines(freshHeadlines.slice(0, 10));
+        } else {
+          // Use stored headlines
+          setAllHeadlines(storedHeadlines);
+          setHeadlines(storedHeadlines.slice(0, 10));
+        }
         setIsInitialized(true);
       } catch (error) {
         console.error('Error initializing app:', error);
       }
     };
-
     initializeApp();
   }, []);
 
