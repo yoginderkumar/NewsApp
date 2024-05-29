@@ -1,10 +1,12 @@
 package com.newsapp;
 
+import com.zoontek.rnbootsplash.RNBootSplash;
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.ReactRootView;
 
 public class MainActivity extends ReactActivity {
+
 
   /**
    * Returns the name of the main component registered from JavaScript. This is used to schedule
@@ -14,7 +16,6 @@ public class MainActivity extends ReactActivity {
   protected String getMainComponentName() {
     return "NewsApp";
   }
-
   /**
    * Returns the instance of the {@link ReactActivityDelegate}. There the RootView is created and
    * you can specify the renderer you wish to use - the new renderer (Fabric) or the old renderer
